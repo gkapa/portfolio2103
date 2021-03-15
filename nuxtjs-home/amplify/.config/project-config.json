@@ -1,0 +1,17 @@
+{
+  "projectName": "nuxtjs210308v2",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "vue",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist",
+      "BuildCommand": "npm run generate",
+      "StartCommand": "npm run start"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-nuxtjs210308v2-dev-220201-authRole",
+            "UnauthRoleArn": "arn:aws:iam::309049164962:role/amplify-nuxtjs210308v2-dev-220201-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::309049164962:role/amplify-nuxtjs210308v2-dev-220201-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "amplify-nuxtjs210308v2-dev-220201-deployment",
+            "UnauthRoleName": "amplify-nuxtjs210308v2-dev-220201-unauthRole",
+            "StackName": "amplify-nuxtjs210308v2-dev-220201",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:309049164962:stack/amplify-nuxtjs210308v2-dev-220201/79bae100-800e-11eb-9630-0693e1093a2e",
+            "AmplifyAppId": "doq0zfhxbijgu"
+        },
+        "categories": {
+            "auth": {
+                "nuxtjs210308v2d8a63747": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "doq0zfhxbijgu",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}

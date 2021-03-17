@@ -43,11 +43,39 @@ export default function fun(props) {
     shallowEqual,
   );
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    setConfirmForm({
+      ...confirmForm,
+      email: storeEmail,
+    });
+  }, []);
 
   const handleSubmit = React.useCallback(
     async (_e) => {
       _e.preventDefault();
+      const res = await auth.confirmRegister({ ...confirmForm });
+      console.log(res);
+
+      if (res.code) {
+        // case: ERROR
+        switch (res.code) {
+          case "UserNotFoundException":
+            setErrors({
+              ...initialErrors,
+              code: "正しい認証コードを入力してください。",
+            });
+            break;
+          default:
+            setErrors({
+              ...initialErrors,
+              code: res.code,
+            });
+            break;
+        }
+      } else {
+        // case: NOT ERROR
+        Router.push("/");
+      }
     },
     [confirmForm, errors],
   );

@@ -15,4 +15,13 @@ export default {
       return error;
     }
   },
+
+  async confirmRegister({ email, code }) {
+    try {
+      await Auth.confirmSignUp(email, code);
+      return { result: "OK" };
+    } catch (error) {
+      return error;
+    }
+  },
 };

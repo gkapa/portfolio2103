@@ -46,7 +46,7 @@ export default Vue.extend({
   components: {},
   data: () => ({
     isFetched: false,
-    weather: null
+    weather: {}
   }),
   async mounted() {
     try {

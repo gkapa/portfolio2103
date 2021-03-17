@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap");
 
 /* @font-face {
   font-family: "Shadow Into Light";
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  font-family: "Noto Sans JP", "Open Sans", sans-serif;
+  font-family: "Noto Serif JP", "Open Sans", sans-serif;
 }
 
 h1,
@@ -38,9 +38,6 @@ a.visited {
 }
 a.hover-underline a:hover {
   text-decoration: underline;
-}
-a.a-blue {
-  color: #0060b6;
 }
 
 button {

@@ -2,6 +2,12 @@ import React from "react";
 import Head from "next/head";
 import "styles/static/normalize.css";
 import "styles/globalStyle.css";
+import "styles/fonts.css";
+
+// npx serverless
+import { Amplify } from "aws-amplify";
+import awsExports from "aws-exports";
+Amplify.configure({ ...awsExports, ssr: true });
 
 // Redux stuff
 import { Provider } from "react-redux";
@@ -9,7 +15,7 @@ import { store } from "store";
 
 import Layout from "layouts/Layout";
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, user }) {
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
@@ -32,11 +38,3 @@ function MyApp({ Component, pageProps }) {
     </React.Fragment>
   );
 }
-
-MyApp.getInitialProps = async (context) => {
-  let ssr = {};
-
-  return { ssr };
-};
-
-export default MyApp;

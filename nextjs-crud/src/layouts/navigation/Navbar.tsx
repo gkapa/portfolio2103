@@ -1,21 +1,103 @@
 import React from "react";
 import styled from "styled-components";
 
-import Hide from "atoms/Hide";
-import MobileUI from "./MobileUI";
-import LaptopUI from "./LaptopUI";
+import Link from "next/link";
+
+import Button from "@material-ui/core/Button";
+
+import { colors, vars } from "styles/theme";
+import { menuItems } from "./menuItems";
 
 export default function fun(props) {
   return (
-    <Container>
-      <Hide when="greaterThanTablet">
-        <MobileUI />
-      </Hide>
-      <Hide when="lessThanTablet">
-        <LaptopUI />
-      </Hide>
-    </Container>
+    <React.Fragment>
+      <Container id="navbar">
+        <div className="appbar">
+          <div className="logo">
+            <Link href="/">HAN</Link>
+          </div>
+          <div className="menu">
+            {menuItems.map((el) => {
+              if (el.link) {
+                return (
+                  <Link href={el.link} key={el.name}>
+                    <Button variant="contained">{el.name}</Button>
+                  </Link>
+                );
+              } else if (el.scroll) {
+                return (
+                  <Button variant="contained" key={el.name}>
+                    {el.name}
+                  </Button>
+                );
+              }
+            })}
+          </div>
+        </div>
+      </Container>
+      <Blank></Blank>
+    </React.Fragment>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: fixed;
+  width: 100%;
+  background-color: ${colors.bluegray[8]};
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    border-bottom: 5px double rgba(0, 0, 0, 0.5);
+    animation: anim-navbar-border 1.5s ease 0s 1 forwards;
+    @keyframes anim-navbar-border {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+  }
+
+  .appbar {
+    width: 100%;
+    max-width: ${vars.maxWidth.main};
+    margin: 0 auto;
+    height: 80px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > .logo {
+      margin-left: 80px;
+
+      a {
+        font-family: "Dancing Script", "Noto Serif JP", "Open Sans", sans-serif;
+        font-size: 2.2rem;
+        color: white;
+      }
+    }
+
+    & > .menu {
+      margin-right: 80px;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+
+      button {
+        margin: 0 5px;
+      }
+    }
+  }
+`;
+
+const Blank = styled.div`
+  width: 100%;
+  height: 80px;
+`;

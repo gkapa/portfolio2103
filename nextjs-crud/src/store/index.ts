@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware } from "redux";
 import { combineReducers } from "redux";
 import reduxThunk from "redux-thunk";
-import navbarReducer, * as navbarActions from "./redux/navbar";
+import authReducer, * as authActions from "./redux/auth";
 
-export { navbarActions };
+export { authActions };
 
 const rootReducer = combineReducers({
-  navbarReducer,
+  authReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

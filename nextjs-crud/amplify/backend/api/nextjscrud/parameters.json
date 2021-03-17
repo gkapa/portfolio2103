@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "nextjscrud",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authnextjscrudba20f111",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

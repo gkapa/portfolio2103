@@ -27,6 +27,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 #footer {
   width: 100%;
+  margin-top: 100px;
   padding: 50px 0;
 
   display: flex;

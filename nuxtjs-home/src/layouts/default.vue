@@ -9,6 +9,7 @@
 <script lang="ts">
 import "~/styles/static/normalize.css";
 import "~/styles/globalStyle.css";
+import "~/styles/fonts.css";
 import Navbar from "~/layouts/navigation/Navbar.vue";
 import Footer from "~/layouts/footer/Footer.vue";
 import Vue from "vue";

@@ -8,9 +8,9 @@
         </div>
         <!-- area: Menu -->
         <div class="menu">
-          <template v-for="(el, key) in menuItems">
+          <template v-for="el in menuItems">
             <template v-if="el.link">
-              <nuxt-link :to="el.link" :key="key">
+              <nuxt-link :to="el.link" :key="el.name">
                 <v-btn class="menu-item">
                   {{ el.name }}
                 </v-btn>
@@ -19,7 +19,7 @@
             <template v-else>
               <v-btn
                 class="menu-item"
-                :key="key"
+                :key="el.name"
                 @click="handleScroll(el.scroll)"
               >
                 {{ el.name }}
@@ -85,8 +85,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
-
 #navbar {
   position: fixed;
   width: 100%;
@@ -144,7 +142,9 @@ export default Vue.extend({
     justify-content: flex-end;
     align-items: flex-start;
 
-    background-color: red;
+    button {
+      margin: 0 5px;
+    }
   }
 }
 </style>

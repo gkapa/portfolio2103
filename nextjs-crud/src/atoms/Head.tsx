@@ -6,6 +6,7 @@ const locales = {
 };
 
 const common = {
+  description: "ポートフォリオ用のWebサイトです。",
   image: "https://",
   url: "https://url",
   favicon: "/favicon.ico",
@@ -13,7 +14,7 @@ const common = {
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   type?: string;
   keywords?: string;
   image?: string;
@@ -42,7 +43,10 @@ export default function fun({
     <Head>
       <title>{title}</title>
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta
+        property="og:description"
+        content={description ? description : common.description}
+      />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={`${common.url}${url}`} />

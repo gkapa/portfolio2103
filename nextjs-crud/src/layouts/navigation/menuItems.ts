@@ -2,43 +2,28 @@ interface IMenuItem {
   name: string;
   link?: string;
   links?: IMenuItem[];
+  scroll?: string;
 }
 
 export const menuItems: IMenuItem[] = [
   {
-    name: "Service",
-    links: [
-      { name: "Brand Strategy", link: "/service/brand_strategy" },
-      { name: "Creative", link: "/service/brand_strategy" },
-      { name: "System Solution", link: "/service/system_solution" },
-    ],
+    name: "Home",
+    link: "/",
   },
   {
-    name: "About",
-    link: "/about",
+    name: "Profile",
+    link: "/profile",
   },
   {
-    name: "Recruit",
-    link: "/recruit",
+    name: "Protected",
+    link: "/protected",
   },
   {
-    name: "Works",
-    link: "/works",
+    name: "Pro-cl-Route",
+    link: "/protected-client-route",
   },
   {
-    name: "News",
-    link: "/news",
-  },
-  {
-    name: "Access",
-    link: "/access",
-  },
-  {
-    name: "Blog",
-    link: "/blog",
-  },
-  {
-    name: "Mail magazine",
-    link: "/mailmagazine",
+    name: "Register",
+    link: "/join/register",
   },
 ];

@@ -43,9 +43,7 @@ export default function fun(props) {
     shallowEqual,
   );
 
-  React.useEffect(() => {
-    setConfirmForm({ ...confirmForm, email: storeEmail });
-  }, [confirmForm]);
+  React.useEffect(() => {}, []);
 
   const handleSubmit = React.useCallback(
     async (_e) => {

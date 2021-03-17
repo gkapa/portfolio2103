@@ -24,7 +24,7 @@ import { authActions } from "store";
 import auth from "pages/api/auth";
 
 const initialErrors = {
-  email: "",
+  username: "",
   code: "",
 };
 
@@ -32,21 +32,21 @@ export default function fun(props) {
   const dispatch = useDispatch();
 
   const [confirmForm, setConfirmForm] = React.useState({
-    email: "",
+    username: "",
     code: "",
   });
   const [errors, setErrors] = React.useState({
     ...initialErrors,
   });
-  const storeEmail = useSelector(
-    (x: RootState) => x.authReducer.user.email,
+  const storeUser = useSelector(
+    (x: RootState) => x.authReducer.user,
     shallowEqual,
   );
 
   React.useEffect(() => {
     setConfirmForm({
       ...confirmForm,
-      email: storeEmail,
+      username: storeUser.username,
     });
   }, []);
 
@@ -105,14 +105,14 @@ export default function fun(props) {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                type="email"
+                id="username"
+                type="text"
                 label="Eメール"
-                name="email"
-                value={confirmForm.email}
+                name="username"
+                value={confirmForm.username}
                 onChange={(e) => handleChange(e)}
-                error={errors.email ? true : false}
-                helperText={errors.email ? errors.email : null}
+                error={errors.username ? true : false}
+                helperText={errors.username ? errors.username : null}
               />
             </Grid>
             <Grid item xs={12}>

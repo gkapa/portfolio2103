@@ -8,7 +8,7 @@ import Router from "next/router"; // Router.push("/")
 // Material-ui stuff
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -22,17 +22,15 @@ import { authActions } from "store";
 import auth from "pages/api/auth";
 
 const initialErrors = {
-  username: undefined,
-  email: undefined,
-  password: undefined,
+  username: "",
+  password: "",
 };
 
 export default function fun(props) {
   const dispatch = useDispatch();
 
-  const [registerForm, setRegisterForm] = React.useState({
+  const [loginForm, setLoginForm] = React.useState({
     username: "",
-    email: "",
     password: "",
   });
   const [errors, setErrors] = React.useState({
@@ -40,77 +38,53 @@ export default function fun(props) {
   });
 
   React.useEffect(() => {}, []);
-  // async function fux() {}
 
   const handleSubmit = React.useCallback(
     async (_e) => {
       _e.preventDefault();
-      if (!registerForm.email) {
-        setErrors({
-          ...initialErrors,
-          email: "Eメールを入力してください。",
-        });
-        return;
-      }
+      const res = await auth.login({ ...loginForm });
+      console.log(res);
 
-      const res = await auth.register(registerForm);
-      console.log({ res });
       if (res.code) {
         // case: ERROR
-        // メッセージ参照： https://dev.classmethod.jp/articles/try-amplify-ui-angular-translations/
-        console.log(res.code);
         switch (res.code) {
-          case "UsernameExistsException":
+          case "UserNotFoundException":
             setErrors({
               ...initialErrors,
-              username: "既に存在しているユーザ名です。",
-            });
-            break;
-          case "InvalidPasswordException":
-          case "InvalidParameterException":
-            setErrors({
-              ...initialErrors,
-              password: "パスワードは8以上の文字数を入力してください。",
             });
             break;
           default:
             setErrors({
               ...initialErrors,
-              username: res.message,
             });
+            break;
         }
       } else {
         // case: NOT ERROR
-        Router.push("/join/confirm");
-        dispatch(
-          authActions.setUser({
-            username: registerForm.username,
-            email: registerForm.email,
-          }),
-        );
+        Router.push("/");
       }
     },
-    [registerForm, errors],
+    [loginForm, errors],
   );
 
   const handleChange = React.useCallback((_e) => {
     const { name, value } = _e.target;
-    setRegisterForm((prev) => ({ ...prev, [name]: value }));
+    setLoginForm((prev) => ({ ...prev, [name]: value }));
   }, []);
 
   return (
     <>
-      {/* <Head
-        title={"XX株式会社（XX） | XX支援企業"}
-        url={"/"}
-      /> */}
       <Wrapper>
         <Avatar className="avatar">
-          <LockOutlinedIcon className="in-avatar" />
+          <CheckCircleIcon className="in-avatar" />
         </Avatar>
         <Typography className="title" component="h1" variant="h5">
-          Sign up
+          会員認証
         </Typography>
+        <Typography>
+          登録して頂いたメールを確認して、認証コードを入力してください。
+        </Typography>
+        <br />
         <form className="form" noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -119,27 +93,13 @@ export default function fun(props) {
                 required
                 fullWidth
                 id="username"
-                label="ID"
+                type="text"
+                label="Eメール"
                 name="username"
-                value={registerForm.username}
+                value={loginForm.username}
                 onChange={(e) => handleChange(e)}
                 error={errors.username ? true : false}
                 helperText={errors.username ? errors.username : null}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Eメール"
-                type="email"
-                name="email"
-                value={registerForm.email}
-                onChange={(e) => handleChange(e)}
-                error={errors.email ? true : false}
-                helperText={errors.email ? errors.email : null}
               />
             </Grid>
             <Grid item xs={12}>
@@ -151,7 +111,7 @@ export default function fun(props) {
                 type="password"
                 label="パスワード"
                 name="password"
-                value={registerForm.password}
+                value={loginForm.password}
                 onChange={(e) => handleChange(e)}
                 error={errors.password ? true : false}
                 helperText={errors.password ? errors.password : null}
@@ -165,13 +125,8 @@ export default function fun(props) {
             variant="contained"
             color="primary"
             className="submit">
-            Sign Up
+            確認
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#">Already have an account? Sign in</Link>
-            </Grid>
-          </Grid>
         </form>
       </Wrapper>
     </>
@@ -187,7 +142,7 @@ const Wrapper = styled.div`
 
   .avatar {
     margin: 8px;
-    background-color: red;
+    background-color: green;
     .in-avatar {
       color: white;
     }

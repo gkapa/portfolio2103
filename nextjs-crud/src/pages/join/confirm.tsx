@@ -26,7 +26,6 @@ export async function getServerSideProps({ req, res }) {
   const { Auth } = withSSRContext({ req });
   try {
     const user = await Auth.currentAuthenticatedUser();
-    console.log({ user: user });
     res.writeHead(302, { Location: "/" });
     res.end();
   } catch (err) {

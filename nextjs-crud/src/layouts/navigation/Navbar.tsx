@@ -1,14 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
+// Communication stuff
 import Link from "next/link";
 
-import Button from "@material-ui/core/Button";
+// Redux stuff
+import { useSelector, shallowEqual } from "react-redux";
+import { RootState } from "store";
 
+// UI stuff
+import Button from "@material-ui/core/Button";
 import { colors, vars } from "styles/theme";
-import { menuItems } from "./menuItems";
+import { menuItems, authedMenuItems } from "./menuItems";
 
 export default function fun(props) {
+  const isAuthenticated = useSelector(
+    (x: RootState) => x.authReducer.isAuthenticated,
+    shallowEqual,
+  );
+
   return (
     <React.Fragment>
       <Container id="navbar">
@@ -17,21 +27,43 @@ export default function fun(props) {
             <Link href="/">HAN</Link>
           </div>
           <div className="menu">
-            {menuItems.map((el) => {
-              if (el.link) {
-                return (
-                  <Link href={el.link} key={el.name}>
-                    <Button variant="contained">{el.name}</Button>
-                  </Link>
-                );
-              } else if (el.scroll) {
-                return (
-                  <Button variant="contained" key={el.name}>
-                    {el.name}
-                  </Button>
-                );
-              }
-            })}
+            {!isAuthenticated ? (
+              <>
+                {menuItems.map((el) => {
+                  if (el.link) {
+                    return (
+                      <Link href={el.link} key={el.name}>
+                        <Button variant="contained">{el.name}</Button>
+                      </Link>
+                    );
+                  } else if (el.scroll) {
+                    return (
+                      <Button variant="contained" key={el.name}>
+                        {el.name}
+                      </Button>
+                    );
+                  }
+                })}
+              </>
+            ) : (
+              <>
+                {authedMenuItems.map((el) => {
+                  if (el.link) {
+                    return (
+                      <Link href={el.link} key={el.name}>
+                        <Button variant="contained">{el.name}</Button>
+                      </Link>
+                    );
+                  } else if (el.func === "logout") {
+                    return (
+                      <Button variant="contained" key={el.name}>
+                        {el.name}
+                      </Button>
+                    );
+                  }
+                })}
+              </>
+            )}
           </div>
         </div>
       </Container>

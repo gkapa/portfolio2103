@@ -1,4 +1,5 @@
 import { Auth } from "aws-amplify";
+import { store, authActions } from "store";
 
 export default {
   //   The Auth.signUp promise returns a data object of type ISignUpResult with a CognitoUser.
@@ -25,7 +26,7 @@ export default {
   async confirmRegister({ username, code }) {
     try {
       await Auth.confirmSignUp(username, code);
-      return { result: "OK" };
+      return { OK: "confirm successful" };
     } catch (error) {
       return error;
     }
@@ -34,9 +35,25 @@ export default {
   async login({ username, password }) {
     try {
       const user = await Auth.signIn(username, password);
+      store.dispatch(
+        authActions.setAuth({
+          username: user.CognitoUser.username,
+          email: user.CognitoUser.attributes.email,
+        }),
+      );
       return user;
     } catch (error) {
-      console.log("error signing in", error);
+      return error;
+    }
+  },
+
+  async logout() {
+    try {
+      await Auth.signOut();
+      store.dispatch(authActions.setUnauth());
+      return { OK: "logout success" };
+    } catch (error) {
+      return error;
     }
   },
 };

@@ -7,7 +7,7 @@ import styled from "styled-components";
 // import Router from "next/router";  // ex: Router.push("/")
 // import { useRouter } from "next/router";  // ex: router.pathname
 
-// Material-ui stuff
+// UI stuff
 // import Button from "@material-ui/core/Button";
 
 // Redux stuff

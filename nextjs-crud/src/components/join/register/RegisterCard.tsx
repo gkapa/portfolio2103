@@ -85,7 +85,6 @@ export default function fun(props) {
         dispatch(
           authActions.setUser({
             username: registerForm.username,
-            email: registerForm.email,
           }),
         );
       }

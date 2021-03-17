@@ -72,9 +72,12 @@ export default function fun(props) {
             });
             break;
         }
+      } else if (res.OK) {
+        alert("メール認証されました。ログインページに移動します。");
+        Router.push("/join/login");
       } else {
-        // case: NOT ERROR
-        Router.push("/");
+        alert("ERROR");
+        console.log(res);
       }
     },
     [confirmForm, errors],
@@ -95,7 +98,8 @@ export default function fun(props) {
           会員認証
         </Typography>
         <Typography>
-          登録して頂いたメールを確認して、認証コードを入力してください。
+          登録して頂いたメールに認証コードを転送して頂きます。
+          メールをご確認し、IDと認証コードを入力してください。
         </Typography>
         <br />
         <form className="form" noValidate>

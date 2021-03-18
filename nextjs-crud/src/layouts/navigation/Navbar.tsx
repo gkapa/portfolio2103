@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 // Communication stuff
 import Link from "next/link";
+import auth from "pages/api/auth";
+import Router from "next/router";
 
 // Redux stuff
 import { useSelector, shallowEqual } from "react-redux";
@@ -33,12 +35,17 @@ export default function fun(props) {
                   if (el.link) {
                     return (
                       <Link href={el.link} key={el.name}>
-                        <Button variant="contained">{el.name}</Button>
+                        <Button className="menu-button" variant="contained">
+                          {el.name}
+                        </Button>
                       </Link>
                     );
                   } else if (el.scroll) {
                     return (
-                      <Button variant="contained" key={el.name}>
+                      <Button
+                        className="menu-button"
+                        variant="contained"
+                        key={el.name}>
                         {el.name}
                       </Button>
                     );
@@ -51,12 +58,21 @@ export default function fun(props) {
                   if (el.link) {
                     return (
                       <Link href={el.link} key={el.name}>
-                        <Button variant="contained">{el.name}</Button>
+                        <Button className="menu-button" variant="contained">
+                          {el.name}
+                        </Button>
                       </Link>
                     );
                   } else if (el.func === "logout") {
                     return (
-                      <Button variant="contained" key={el.name}>
+                      <Button
+                        className="menu-button"
+                        variant="contained"
+                        key={el.name}
+                        onClick={() => {
+                          auth.logout();
+                          Router.push("/");
+                        }}>
                         {el.name}
                       </Button>
                     );
@@ -123,7 +139,12 @@ const Container = styled.div`
       align-items: flex-start;
 
       button {
-        margin: 0 5px;
+        margin: 0 8px;
+        background-color: ${colors.cyan[9]};
+        color: white;
+        font-family: "Montserrat", "Noto Serif JP", "Open Sans", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
       }
     }
   }

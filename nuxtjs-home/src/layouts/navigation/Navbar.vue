@@ -77,7 +77,8 @@ export default Vue.extend({
     styles() {
       return {
         "--navbar-bgColor": colors.bluegray[8],
-        "--max-width": vars.maxWidth.main
+        "--max-width": vars.maxWidth.main,
+        "--menu-button-bgColor": colors.cyan[9]
       };
     }
   }
@@ -143,7 +144,12 @@ export default Vue.extend({
     align-items: flex-start;
 
     button {
-      margin: 0 5px;
+      margin: 0 8px;
+      background-color: var(--menu-button-bgColor);
+      color: white;
+      font-family: "Montserrat", "Noto Serif JP", "Open Sans", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
     }
   }
 }

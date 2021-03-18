@@ -21,15 +21,11 @@ interface State {
   user: object;
 }
 
-const initialUser = {
-  username: "",
-  email: "",
-};
-
 const initialState: State = {
   isAuthenticated: false,
   user: {
-    ...initialUser,
+    username: "",
+    email: "",
   },
 };
 
@@ -40,6 +36,7 @@ export default function fun(state = initialState, action: Action) {
         ...state,
         isAuthenticated: true,
         user: {
+          ...state.user,
           ...action.payload,
         },
       };
@@ -47,9 +44,7 @@ export default function fun(state = initialState, action: Action) {
       return {
         ...state,
         isAuthenticated: false,
-        user: {
-          ...initialUser,
-        },
+        user: initialState.user,
       };
     case SET_USER:
       return {

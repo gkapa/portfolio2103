@@ -7,8 +7,8 @@ type Post
     ]
   ) {
   id: ID!
-  name: String!
-  content: String
+  title: String!
+  content: String!
   comments: [Comment] @connection(keyName: "commentsByPostId", fields: ["id"])
   username: String
   createdAt: AWSDateTime

@@ -5,7 +5,7 @@ export const onCreatePost = /* GraphQL */ `
   subscription OnCreatePost($username: String) {
     onCreatePost(username: $username) {
       id
-      name
+      title
       content
       username
       createdAt
@@ -28,7 +28,7 @@ export const onUpdatePost = /* GraphQL */ `
   subscription OnUpdatePost($username: String) {
     onUpdatePost(username: $username) {
       id
-      name
+      title
       content
       username
       createdAt
@@ -51,7 +51,7 @@ export const onDeletePost = /* GraphQL */ `
   subscription OnDeletePost($username: String) {
     onDeletePost(username: $username) {
       id
-      name
+      title
       content
       username
       createdAt

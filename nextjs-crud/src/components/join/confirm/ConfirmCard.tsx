@@ -50,38 +50,35 @@ export default function fun(props) {
     });
   }, []);
 
-  const handleSubmit = React.useCallback(
-    async (_e) => {
-      _e.preventDefault();
-      const res = await auth.confirmRegister({ ...confirmForm });
-      console.log(res);
+  async function handleSubmit(_e) {
+    _e.preventDefault();
+    const res = await auth.confirmRegister({ ...confirmForm });
+    console.log(res);
 
-      if (res.code) {
-        // case: ERROR
-        switch (res.code) {
-          case "UserNotFoundException":
-            setErrors({
-              ...initialErrors,
-              code: "正しい認証コードを入力してください。",
-            });
-            break;
-          default:
-            setErrors({
-              ...initialErrors,
-              code: res.code,
-            });
-            break;
-        }
-      } else if (res.OK) {
-        alert("メール認証されました。ログインページに移動します。");
-        Router.push("/join/login");
-      } else {
-        alert("ERROR");
-        console.log(res);
+    if (res.code) {
+      // case: ERROR
+      switch (res.code) {
+        case "UserNotFoundException":
+          setErrors({
+            ...initialErrors,
+            code: "正しい認証コードを入力してください。",
+          });
+          break;
+        default:
+          setErrors({
+            ...initialErrors,
+            code: res.code,
+          });
+          break;
       }
-    },
-    [confirmForm, errors],
-  );
+    } else if (res.OK) {
+      alert("メール認証されました。ログインページに移動します。");
+      Router.push("/join/login");
+    } else {
+      alert("ERROR");
+      console.log(res);
+    }
+  }
 
   const handleChange = React.useCallback((_e) => {
     const { name, value } = _e.target;

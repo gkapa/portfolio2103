@@ -8,20 +8,33 @@ import "styles/fonts.css";
 import { Amplify } from "aws-amplify";
 import awsExports from "aws-exports";
 Amplify.configure({ ...awsExports, ssr: true });
+import checkUser from "pages/api/checkUser";
 
 // Redux stuff
-import { Provider } from "react-redux";
-import { store } from "store";
+import { Provider, useDispatch } from "react-redux";
+import { store, authActions } from "store";
 
 import Layout from "layouts/Layout";
 
-export default function MyApp({ Component, pageProps, user }) {
+export default function MyApp({ Component, pageProps }) {
+  const user = checkUser();
+
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
+  React.useEffect(() => {
+    if (!user) return;
+    store.dispatch(
+      authActions.setAuth({
+        username: user.username,
+        email: user.attributes.email,
+      }),
+    );
+  }, [user]);
 
   return (
     <React.Fragment>

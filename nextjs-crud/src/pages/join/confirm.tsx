@@ -28,9 +28,6 @@ export async function getServerSideProps({ req, res }) {
     const user = await Auth.currentAuthenticatedUser();
     res.writeHead(302, { Location: "/" });
     res.end();
-  } catch (err) {
-    // res.writeHead(302, { Location: "/profile" });
-    // res.end();
-  }
+  } catch (err) {}
   return { props: {} };
 }

@@ -1,47 +1,61 @@
+import React from "react";
 import styled from "styled-components";
 
-import { useState } from "react";
-import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
 import { useRouter } from "next/router";
 import { createPost } from "graphql/mutations";
 import { API } from "aws-amplify";
 
-function CreatePost() {
-  const [formState, updateFormState] = useState({ name: "", content: "" });
+const initialForm = {
+  title: "",
+  content: "",
+};
+
+export default function fun() {
   const router = useRouter();
-  function onChange(e) {
-    e.persist();
-    updateFormState((state) => ({ ...state, [e.target.name]: e.target.value }));
-  }
+
+  const [formState, setFormState] = React.useState({
+    ...initialForm,
+  });
+
+  const handleChange = React.useCallback(
+    (_e) => {
+      setFormState((prev) => ({ ...prev, [_e.target.name]: _e.target.value }));
+    },
+    [formState],
+  );
+
   async function createPostMutation() {
-    if (!formState.name || !formState.content) return;
-    const { data } = await API.graphql({
+    if (!formState.title || !formState.content) return;
+
+    const data = await API.graphql({
       query: createPost,
       variables: { input: formState },
+      // @ts-ignore
       authMode: "AMAZON_COGNITO_USER_POOLS",
     });
-    router.push(`/posts/${data.createPost.id}`);
+    console.log({ data: data });
+    // router.push(`/posts/${data.createPost.id}`);
   }
+
   return (
     <Wrapper>
       <div className={"formStyle"}>
         <input
-          placeholder="Post name"
-          name="name"
-          onChange={onChange}
+          placeholder="Post Title"
+          name="title"
+          onChange={(e) => handleChange(e)}
           className={"inputStyle"}
         />
         <textarea
           placeholder="Post content"
           name="content"
-          onChange={onChange}
+          onChange={(e) => handleChange(e)}
           className={"inputStyle"}
         />
-        <button onClick={createPostMutation} className={"buttonStyle"}>
+        <button onClick={() => createPostMutation()} className={"buttonStyle"}>
           Create Post
         </button>
       </div>
-      <AmplifySignOut />
     </Wrapper>
   );
 }
@@ -67,5 +81,3 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 `;
-
-export default withAuthenticator(CreatePost);

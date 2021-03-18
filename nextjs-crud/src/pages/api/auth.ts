@@ -1,4 +1,5 @@
 import { Auth } from "aws-amplify";
+import checkUser from "plugins/auth";
 import { store, authActions } from "store";
 
 export default {

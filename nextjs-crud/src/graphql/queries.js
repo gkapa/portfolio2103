@@ -5,7 +5,7 @@ export const getPost = /* GraphQL */ `
   query GetPost($id: ID!) {
     getPost(id: $id) {
       id
-      name
+      title
       content
       username
       createdAt
@@ -33,7 +33,7 @@ export const listPosts = /* GraphQL */ `
     listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
+        title
         content
         username
         createdAt

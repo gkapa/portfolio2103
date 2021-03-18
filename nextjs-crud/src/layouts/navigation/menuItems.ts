@@ -16,14 +16,6 @@ export const menuItems: IMenuItem[] = [
     link: "/profile",
   },
   {
-    name: "Protected",
-    link: "/protected",
-  },
-  {
-    name: "Pro-cl-Route",
-    link: "/protected-client-route",
-  },
-  {
     name: "Register",
     link: "/join/register",
   },

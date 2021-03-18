@@ -39,57 +39,65 @@ export default function fun(props) {
 
   React.useEffect(() => {}, []);
 
-  const handleSubmit = React.useCallback(
-    async (_e) => {
-      _e.preventDefault();
-      if (!loginForm.username) {
-        setErrors({
-          ...initialErrors,
-          username: "IDを入力してください。",
-        });
-        return;
-      } else if (!loginForm.password) {
-        setErrors({
-          ...initialErrors,
-          password: "パスワードを入力してください。",
-        });
-        return;
-      }
+  async function handleSubmit(_e) {
+    _e.preventDefault();
+    if (!loginForm.username) {
+      setErrors({
+        ...initialErrors,
+        username: "IDを入力してください。",
+      });
+      return;
+    } else if (!loginForm.password) {
+      setErrors({
+        ...initialErrors,
+        password: "パスワードを入力してください。",
+      });
+      return;
+    }
 
-      const res = await auth.login({ ...loginForm });
-      console.log(res);
+    console.log({
+      loginForm: loginForm,
+    });
+    const res = await auth.login({ ...loginForm });
+    console.log(res);
 
-      if (res.code) {
-        // case: ERROR
-        switch (res.code) {
-          case "UserNotConfirmedException":
-            alert("メール認証が必要です。認証ページに移動します。");
-            dispatch(
-              authActions.setUser({
-                username: loginForm.username,
-              }),
-            );
-            Router.push("/join/confirm");
-            break;
-          case "UserNotFoundException":
-            alert("登録されていないユーザIDです。");
-            setErrors({
-              ...initialErrors,
-              username: "登録されていないユーザIDです。",
-            });
-            break;
-          default:
-            setErrors({
-              ...initialErrors,
-            });
-            break;
-        }
-      } else {
-        // case: NOT ERROR
+    if (res.code) {
+      // case: ERROR
+      switch (res.code) {
+        case "UserNotConfirmedException":
+          alert("メール認証が必要です。認証ページに移動します。");
+          dispatch(
+            authActions.setUser({
+              username: loginForm.username,
+            }),
+          );
+          Router.push("/join/confirm");
+          break;
+        case "UserNotFoundException":
+          alert("登録されていないユーザIDです。");
+          setErrors({
+            ...initialErrors,
+            username: "登録されていないユーザIDです。",
+          });
+          break;
+        case "NotAuthorizedException":
+          setErrors({
+            ...initialErrors,
+            username: "ユーザIDまたはパスワードが間違っています。",
+            password: "ユーザIDまたはパスワードが間違っています。",
+          });
+          break;
+        default:
+          setErrors({
+            ...initialErrors,
+          });
+          break;
       }
-    },
-    [loginForm, errors],
-  );
+    } else {
+      // case: NOT ERROR
+      Router.push("/");
+    }
+  }
 
   const handleChange = React.useCallback((_e) => {
     const { name, value } = _e.target;

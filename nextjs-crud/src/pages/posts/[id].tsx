@@ -1,17 +1,23 @@
 import { API } from "aws-amplify";
 import { getPost, listPosts } from "graphql/queries";
-import "../../configureAmplify";
+import "configureAmplify";
 import { useRouter } from "next/router";
 
-export default function Post({ post }) {
+export default function fun({ post }) {
   const router = useRouter();
-  if (router.isFallback) return <div>Loading...</div>;
+
   return (
-    <div>
-      <h2>{post.name}</h2>
-      <p>{post.content}</p>
-      <span>By: {post.username}</span>
-    </div>
+    <>
+      {router.isFallback ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <h2>{post.name}</h2>
+          <p>{post.content}</p>
+          <span>By: {post.username}</span>
+        </div>
+      )}
+    </>
   );
 }
 

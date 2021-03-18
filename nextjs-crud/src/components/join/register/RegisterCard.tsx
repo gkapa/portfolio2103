@@ -42,55 +42,52 @@ export default function fun(props) {
   React.useEffect(() => {}, []);
   // async function fux() {}
 
-  const handleSubmit = React.useCallback(
-    async (_e) => {
-      _e.preventDefault();
-      if (!registerForm.email) {
-        setErrors({
-          ...initialErrors,
-          email: "Eメールを入力してください。",
-        });
-        return;
-      }
+  async function handleSubmit(_e) {
+    _e.preventDefault();
+    if (!registerForm.email) {
+      setErrors({
+        ...initialErrors,
+        email: "Eメールを入力してください。",
+      });
+      return;
+    }
 
-      const res = await auth.register(registerForm);
-      console.log({ res });
-      if (res.code) {
-        // case: ERROR
-        // メッセージ参照： https://dev.classmethod.jp/articles/try-amplify-ui-angular-translations/
-        console.log(res.code);
-        switch (res.code) {
-          case "UsernameExistsException":
-            setErrors({
-              ...initialErrors,
-              username: "既に存在しているユーザ名です。",
-            });
-            break;
-          case "InvalidPasswordException":
-          case "InvalidParameterException":
-            setErrors({
-              ...initialErrors,
-              password: "パスワードは8以上の文字数を入力してください。",
-            });
-            break;
-          default:
-            setErrors({
-              ...initialErrors,
-              username: res.message,
-            });
-        }
-      } else {
-        // case: NOT ERROR
-        Router.push("/join/confirm");
-        dispatch(
-          authActions.setUser({
-            username: registerForm.username,
-          }),
-        );
+    const res = await auth.register(registerForm);
+    console.log({ res });
+    if (res.code) {
+      // case: ERROR
+      // メッセージ参照： https://dev.classmethod.jp/articles/try-amplify-ui-angular-translations/
+      console.log(res.code);
+      switch (res.code) {
+        case "UsernameExistsException":
+          setErrors({
+            ...initialErrors,
+            username: "既に存在しているユーザ名です。",
+          });
+          break;
+        case "InvalidPasswordException":
+        case "InvalidParameterException":
+          setErrors({
+            ...initialErrors,
+            password: "パスワードは8以上の文字数を入力してください。",
+          });
+          break;
+        default:
+          setErrors({
+            ...initialErrors,
+            username: res.message,
+          });
       }
-    },
-    [registerForm, errors],
-  );
+    } else {
+      // case: NOT ERROR
+      Router.push("/join/confirm");
+      dispatch(
+        authActions.setUser({
+          username: registerForm.username,
+        }),
+      );
+    }
+  }
 
   const handleChange = React.useCallback((_e) => {
     const { name, value } = _e.target;

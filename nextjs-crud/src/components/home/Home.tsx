@@ -13,7 +13,7 @@ import { vars } from "styles/theme";
 // import { RootState } from "store";
 
 // Components
-import Chat from "./Chat";
+import Posts from "./Posts";
 
 export default function fun(props) {
   return (
@@ -21,16 +21,16 @@ export default function fun(props) {
       <Wrapper>
         <HomeTitle>
           <Avatar className="avatar">
-            チャット
+            CRUD
             <br />
-            APP！
+            機能
           </Avatar>
           <p>
             AWS,
-            Nextjsを利用したCRUD可能なチャット機能を実装しました。会員登録からログイン、ログイン維持、ログアウト、メッセージの登録まで可能です。
+            Nextjsを利用したCRUD可能な書き込み機能を実装しました。会員登録からログイン、ログイン維持、ログアウト、メッセージの登録まで可能です。
           </p>
         </HomeTitle>
-        <Chat />
+        <Posts />
       </Wrapper>
     </>
   );
@@ -38,16 +38,21 @@ export default function fun(props) {
 
 const Wrapper = styled.div`
   margin: 0 auto;
+  margin-top: 60px;
   max-width: ${vars.maxWidth.main};
 `;
 
 const HomeTitle = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row wrap;
+  justify-content: center;
 
   .avatar {
-    display: inline-block;
-    margin: 16px;
+    width: 100px;
+    height: 100px;
+    margin-right: 25px;
 
     background-color: black;
     color: white;

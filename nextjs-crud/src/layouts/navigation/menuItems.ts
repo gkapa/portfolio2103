@@ -12,10 +12,6 @@ export const menuItems: IMenuItem[] = [
     link: "/",
   },
   {
-    name: "Profile",
-    link: "/profile",
-  },
-  {
     name: "Register",
     link: "/join/register",
   },

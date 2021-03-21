@@ -2,13 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 // Communication stuff
-// import axios from 'axios';
-// import Link from "next/link";
-// import Router from "next/router";  // ex: Router.push("/")
-// import { useRouter } from "next/router";  // ex: router.pathname
 import { API, graphqlOperation } from "aws-amplify";
 import { createChat } from "graphql/mutations";
-import { listChats, listChatsByCreated } from "graphql/queries";
+import { listChatsByCreated } from "graphql/queries";
 
 // UI stuff
 import Button from "@material-ui/core/Button";
@@ -19,7 +15,6 @@ import { useSelector, shallowEqual } from "react-redux";
 import { RootState } from "store";
 
 // Components
-import { colors, vars } from "styles/theme";
 
 const skeleton = [
   {

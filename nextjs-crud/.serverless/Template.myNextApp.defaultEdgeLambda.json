@@ -1,10 +1,10 @@
 {
   "name": "oyzm9io-tng8fy9",
-  "hash": "Uo7MQFCAh53yehen/rmalG7xebrZ+qntd/ZksSAEqeA=",
+  "hash": "IA3qObNj0WlCuPz+vU4WNSRPCwT4hE8QlEC9UjrxaX8=",
   "description": "Default Lambda@Edge for Next CloudFront distribution",
   "memory": 512,
   "timeout": 10,
-  "code": "E:\\__works\\portfolio2103\\nextjs-crud\\.serverless_nextjs\\default-lambda",
+  "code": "F:\\__works\\portfolio2103\\nextjs-crud\\.serverless_nextjs\\default-lambda",
   "shims": [],
   "handler": "index.handler",
   "runtime": "nodejs12.x",

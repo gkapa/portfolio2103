@@ -11,8 +11,8 @@ export default function fun(props) {
   return (
     <>
       <Head
-        title={"XX株式会社（XX） | XX支援企業"}
-        description={"XX開発の３つのサービスを提供するXX支援企業です。"}
+        title={"AWS + NextJS チャット機能 | Han Sahyeon"}
+        // description={"ポートフォリオ用ページです。"}
         url={nextRouter.pathname}
       />
       <Home></Home>

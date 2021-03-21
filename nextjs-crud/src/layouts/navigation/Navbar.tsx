@@ -90,6 +90,7 @@ export default function fun(props) {
 
 const Container = styled.div`
   position: fixed;
+  z-index: ${vars.zIndex.navbar};
   width: 100%;
   background-color: ${colors.bluegray[8]};
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);

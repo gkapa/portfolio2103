@@ -10,18 +10,14 @@ export const vars = {
   maxWidth: {
     main: "1080px"
   },
+  zIndex: {
+    navbar: 205,
+    overlay: 208,
+    backdrop: 210,
+    sidebar: 220
+  },
   navbar: {
-    height: "100px",
-    zIndex: 205
-  },
-  overlay: {
-    zIndex: 208
-  },
-  backdrop: {
-    zIndex: 210
-  },
-  sidebar: {
-    zIndex: 220
+    height: "100px"
   }
 };
 

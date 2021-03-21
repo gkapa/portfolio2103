@@ -105,7 +105,7 @@ export default function fun(props) {
           <LockOutlinedIcon className="in-avatar" />
         </Avatar>
         <Typography className="title" component="h1" variant="h5">
-          Sign up
+          アカウント作成
         </Typography>
         <form className="form" noValidate>
           <Grid container spacing={2}>
@@ -165,7 +165,9 @@ export default function fun(props) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#">Already have an account? Sign in</Link>
+              <a className="hover hover-underline" href="/join/login">
+                アカウントをお持ちの方はここでログイン可能です
+              </a>
             </Grid>
           </Grid>
         </form>

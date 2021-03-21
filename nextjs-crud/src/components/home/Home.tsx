@@ -13,7 +13,7 @@ import { vars } from "styles/theme";
 // import { RootState } from "store";
 
 // Components
-import Posts from "./Posts";
+import Chat from "./Chat";
 
 export default function fun(props) {
   return (
@@ -21,16 +21,16 @@ export default function fun(props) {
       <Wrapper>
         <HomeTitle>
           <Avatar className="avatar">
-            CRUD
+            チャット
             <br />
             機能
           </Avatar>
           <p>
             AWS,
-            Nextjsを利用したCRUD可能な書き込み機能を実装しました。会員登録からログイン、ログイン維持、ログアウト、メッセージの登録まで可能です。
+            Nextjsを利用し、ログインしたユーザに書き込み可能機能を実装しました。会員登録からログイン、ログイン維持、ログアウト、メッセージの登録まで可能です。
           </p>
         </HomeTitle>
-        <Posts />
+        <Chat />
       </Wrapper>
     </>
   );
@@ -56,7 +56,6 @@ const HomeTitle = styled.div`
 
     background-color: black;
     color: white;
-    font-family: "Montserrat", "Noto Serif JP", "Open Sans", sans-serif;
     font-size: 1.4rem;
   }
 

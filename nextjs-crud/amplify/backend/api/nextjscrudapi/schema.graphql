@@ -1,0 +1,54 @@
+type Chat
+  @model
+  @key(
+    name: "SortByCreated"
+    fields: ["status", "createdAt"]
+    queryField: "listChatsByCreated"
+  )
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "donor" }
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  status: String!
+  donor: String!
+  content: String!
+  createdAt: AWSDateTime!
+}
+
+# type Post
+#   @model
+#   @auth(
+#     rules: [
+#       { allow: owner, ownerField: "username" }
+#       { allow: public, operations: [read] }
+#     ]
+#   ) {
+#   id: ID!
+#   title: String!
+#   content: String!
+#   comments: [Comment] @connection(keyName: "commentsByPostId", fields: ["id"])
+#   username: String
+#   createdAt: AWSDateTime
+# }
+
+# type Comment
+#   @model
+#   @key(
+#     name: "commentsByPostId"
+#     fields: ["postId"]
+#     queryField: "commentsByPostId"
+#   )
+#   @auth(
+#     rules: [
+#       { allow: owner, ownerField: "username" }
+#       { allow: public, operations: [read] }
+#     ]
+#   ) {
+#   id: ID!
+#   postId: ID!
+#   message: String!
+#   username: String
+# }

@@ -1,75 +1,30 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
+export const getChat = /* GraphQL */ `
+  query GetChat($id: ID!) {
+    getChat(id: $id) {
       id
-      title
+      status
+      donor
       content
-      username
       createdAt
       updatedAt
-      comments {
-        items {
-          id
-          postId
-          message
-          username
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
     }
   }
 `;
-export const listPosts = /* GraphQL */ `
-  query ListPosts(
-    $filter: ModelPostFilterInput
+export const listChats = /* GraphQL */ `
+  query ListChats(
+    $filter: ModelChatFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listChats(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
+        status
+        donor
         content
-        username
-        createdAt
-        updatedAt
-        comments {
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
-      id
-      postId
-      message
-      username
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        postId
-        message
-        username
         createdAt
         updatedAt
       }
@@ -77,16 +32,18 @@ export const listComments = /* GraphQL */ `
     }
   }
 `;
-export const commentsByPostId = /* GraphQL */ `
-  query CommentsByPostId(
-    $postId: ID
+export const listChatsByCreated = /* GraphQL */ `
+  query ListChatsByCreated(
+    $status: String
+    $createdAt: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
-    $filter: ModelCommentFilterInput
+    $filter: ModelChatFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    commentsByPostId(
-      postId: $postId
+    listChatsByCreated(
+      status: $status
+      createdAt: $createdAt
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -94,9 +51,9 @@ export const commentsByPostId = /* GraphQL */ `
     ) {
       items {
         id
-        postId
-        message
-        username
+        status
+        donor
+        content
         createdAt
         updatedAt
       }

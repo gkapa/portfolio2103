@@ -54,7 +54,7 @@ export default Vue.extend({
       // ex: api.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
       const city_id = "1856210"; // Nagano
       const api_key = process.env.API_KEY;
-      const url = `http://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=${api_key}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=${api_key}`;
 
       //@ts-ignore
       const response = await this.$axios.$get(url);

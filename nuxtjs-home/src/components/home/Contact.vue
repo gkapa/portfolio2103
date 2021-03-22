@@ -7,7 +7,7 @@
       <div class="content">
         <div :style="{ margin: '10px auto' }">e-mail: pleasmin@gmail.com</div>
         <v-btn class="contact-button"
-          ><a href="https://d2gebidt8vtcq4.cloudfront.net/" target="_blank"
+          ><a href="https://github.com/gkapa/portfolio2103" target="_blank"
             ><v-icon class="git-icon">mdi-github</v-icon>Github</a
           ></v-btn
         >

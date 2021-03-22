@@ -88,7 +88,7 @@ p {
 }
 
 .person-icon {
-  color: inherit;
+  color: white;
   font-size: 3rem;
 }
 </style>

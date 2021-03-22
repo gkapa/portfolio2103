@@ -77,6 +77,7 @@ export default Vue.extend({
     styles() {
       return {
         "--navbar-bgColor": colors.bluegray[8],
+        "--navbar-zIndex": vars.zIndex.navbar,
         "--max-width": vars.maxWidth.main,
         "--menu-button-bgColor": colors.cyan[9]
       };
@@ -88,6 +89,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 #navbar {
   position: fixed;
+  z-index: var(--navbar-zIndex);
   width: 100%;
 
   background-color: var(--navbar-bgColor);

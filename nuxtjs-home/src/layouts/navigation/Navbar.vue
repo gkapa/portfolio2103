@@ -130,7 +130,7 @@ export default Vue.extend({
     margin-left: 80px;
 
     a {
-      font-family: "Dancing Script", "Noto Serif JP", "Open Sans", sans-serif;
+      font-family: "Dancing Script", "Noto Serif JP", "Montserrat", sans-serif;
       font-size: 2.2rem;
       color: white;
     }
@@ -147,7 +147,6 @@ export default Vue.extend({
       margin: 0 8px;
       background-color: var(--menu-button-bgColor);
       color: white;
-      font-family: "Montserrat", "Noto Serif JP", "Open Sans", sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
     }

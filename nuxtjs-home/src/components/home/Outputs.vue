@@ -1,37 +1,42 @@
 <template>
   <div id="home-outputs" :style="styles">
     <div class="main-container">
-      <ParaTitle title="SDFxx" subtitle="Hello, World!"></ParaTitle>
+      <ParaTitle title="作成した物" subtitle="OUTPUTS"></ParaTitle>
       <div class="main-content">
         <div class="output-container">
           <div class="link">
-            <a href="https://www.dogdrip.net" target="_blank">
-              <img src="~/static/icons/home/cpp.png" alt="" />
+            <a href="https://d2gebidt8vtcq4.cloudfront.net/" target="_blank">
+              <img src="~/static/images/home/chatpage.jpg" alt="" />
             </a>
           </div>
+          <div class="introduce">
+            <p class="title">チャット機能</p>
+            <p class="content">適用技術スタック</p>
+          </div>
           <div class="skills">
+            <img src="~/static/icons/home/react.png" alt="" class="icon" />
+            <img src="~/static/icons/home/aws.webp" alt="" class="icon" />
             <img src="~/static/icons/home/css.png" alt="" class="icon" />
+          </div>
+        </div>
+        <div class="output-container">
+          <div class="link">
+            <a href="/weather" target="_blank">
+              <img src="~/static/images/home/weatherpage.jpg" alt="" />
+            </a>
+          </div>
+          <div class="introduce">
+            <p class="title">現在の天気</p>
+            <p class="content">適用技術スタック</p>
+          </div>
+          <div class="skills">
             <img src="~/static/icons/home/vue.png" alt="" class="icon" />
-          </div>
-        </div>
-        <div class="output-container">
-          <div class="link">
-            <a href="https://www.dogdrip.net" target="_blank">
-              <img src="~/static/icons/home/cpp.png" alt="" />
-            </a>
-          </div>
-          <div class="skills">
-            <img src="~/static/icons/home/cpp.png" alt="" class="icon" />
-          </div>
-        </div>
-        <div class="output-container">
-          <div class="link">
-            <a href="https://www.dogdrip.net" target="_blank">
-              <img src="~/static/icons/home/cpp.png" alt="" />
-            </a>
-          </div>
-          <div class="skills">
-            <img src="~/static/icons/home/cpp.png" alt="" class="icon" />
+            <img
+              src="~/static/icons/home/openweather.jpg"
+              alt=""
+              class="icon"
+            />
+            <img src="~/static/icons/home/css.png" alt="" class="icon" />
           </div>
         </div>
       </div>
@@ -88,8 +93,29 @@ export default Vue.extend({
   border-radius: 45px;
   background-color: white;
 
+  .introduce {
+    color: gray;
+    .title {
+      font-size: 1.4rem;
+    }
+  }
+
   div.link {
+    position: relative;
     margin-bottom: 20px;
+    a:hover {
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: greenyellow;
+        border-radius: 3px;
+        opacity: 0.5;
+      }
+    }
 
     img {
       width: 200px;
@@ -103,7 +129,7 @@ export default Vue.extend({
 
     img.icon {
       margin: 10px;
-      width: 60px;
+      width: 50px;
     }
   }
 }

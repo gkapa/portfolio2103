@@ -37,6 +37,9 @@ a.visited {
 a.hover-underline:hover {
   text-decoration: underline;
 }
+a.color-blue {
+  color: #5190ff;
+}
 
 button {
   border: none;

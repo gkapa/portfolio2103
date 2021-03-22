@@ -3,6 +3,7 @@
     <Main />
     <Introduce />
     <Outputs />
+    <Contact />
   </div>
 </template>
 
@@ -11,12 +12,14 @@ import Vue from "vue";
 import Main from "./Main.vue";
 import Introduce from "./Introduce.vue";
 import Outputs from "./Outputs.vue";
+import Contact from "./Contact.vue";
 
 export default Vue.extend({
   components: {
     Main,
     Introduce,
-    Outputs
+    Outputs,
+    Contact
   }
 });
 </script>
@@ -26,7 +29,5 @@ export default Vue.extend({
 
 #home-home {
   width: 100%;
-
-  font-family: "Montserrat", cursive;
 }
 </style>

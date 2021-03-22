@@ -1,17 +1,17 @@
-公開している Web サイトのソースコードです。
+公開している Web サイトのソースコードです。 <br />
 
 ## nuxtjs-home
 
-[nuxtjs-home] ディレクトリは NuxtJs で作成したポートフォリオのウェブページです。
+[nuxtjs-home] ディレクトリは NuxtJs で作成したポートフォリオのウェブページです。 <br />
 
 ・開発環境
-フロントエンド：NuxtJs
-インフラ：AWS
-CSS スタイリング：SCSS
-CSS ライブラリ：vuetify
-フレームワーク：vscode
+フロントエンド：NuxtJs <br />
+インフラ：AWS <br />
+CSS スタイリング：SCSS <br />
+CSS ライブラリ：vuetify <br />
+フレームワーク：vscode <br />
 
-以下はディレクトリ構成です。
+以下はディレクトリ構成です。 <br />
 
 <!-- DIRSTRUCTURE_START_MARKER -->
 <pre>
@@ -87,16 +87,16 @@ nuxtjs-home/
 
 ## nextjs-crud
 
-[nextjs-crud] ディレクトリは Nextjs で作成したチャット機能を実装したウェブページのコードです。
+[nextjs-crud] ディレクトリは Nextjs で作成したチャット機能を実装したウェブページのコードです。 <br />
 
 ・開発環境
-フロントエンド：NextJs
-インフラ：AWS
-CSS スタイリング：styled components
-CSS ライブラリ：material ui
-フレームワーク：vscode
+フロントエンド：NextJs <br />
+インフラ：AWS <br />
+CSS スタイリング：styled components <br />
+CSS ライブラリ：material ui <br />
+フレームワーク：vscode <br />
 
-以下はディレクトリ構成です。
+以下はディレクトリ構成です。 <br />
 
 <!-- DIRSTRUCTURE_START_MARKER -->
 <pre>
